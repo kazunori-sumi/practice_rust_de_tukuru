@@ -10,6 +10,7 @@ fn main() {
                 } else {
                     match word {
                         "+" => add(&mut stack),
+                        "-" => sub(&mut stack),
                         _ => panic!("{word:?} could not be parsed"),
                     }
                 }
@@ -25,4 +26,11 @@ fn add(stack: &mut Vec<i32>) {
     let rhs = stack.pop().unwrap();
 
     stack.push(lhs + rhs);
+}
+
+fn sub(stack: &mut Vec<i32>) {
+    let lhs = stack.pop().unwrap();
+    let rhs = stack.pop().unwrap();
+
+    stack.push(lhs - rhs);
 }
