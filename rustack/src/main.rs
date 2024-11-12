@@ -15,12 +15,6 @@ impl<'src> Value<'src> {
             _ => panic!("Value is not a number"),
         }
     }
-
-    fn add(stack: &mut Vec<Value>) {
-        let rhs = stack.pop().unwrap().as_num();
-        let lhs = stack.pop().unwrap().as_num();
-        stack.push(Value::Num(lhs + rhs));
-    }
 }
 
 fn main() {
@@ -120,7 +114,7 @@ mod test {
     #[test]
     fn test_group() {
         assert_eq!(
-            parse("1 2 + {3 4}"),
+            parse("1 2 + { 3 4 }"),
             vec![Num(3), Block(vec![Num(3), Num(4)])]
         );
     }
